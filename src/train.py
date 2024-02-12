@@ -9,7 +9,7 @@ def	gradientDescent(mileages: list, prices: list) -> tuple:
 	t1History = [0.0]
 	t0 = 0.0
 	t1 = 0.0
-	message = "max epoch reached"
+	message = "End of the training period!"
 	
 	for iter in range(iterations):
 		dt0 = 0
@@ -21,7 +21,7 @@ def	gradientDescent(mileages: list, prices: list) -> tuple:
 		t1 -= dt1 / len(prices) * learningRate
 		loss = findLosses(t0, t1, mileages, prices)
 		if iter % 10 == 0:
-			print("epoch {} - loss: {:.8}".format(iter, loss))
+			print("iter {} - loss: {:.8}".format(iter, loss))
 		t0, t1, learningRate = boldDriver(loss, lossHistory, t0, t1,
 								dt0, dt1, learningRate, len(mileages))
 		lossHistory.append(loss)
@@ -31,7 +31,7 @@ def	gradientDescent(mileages: list, prices: list) -> tuple:
 			message = "early stopped"
 			break
 	print("\nend: {}".format(message))
-	print("epoch {} - loss: {:.8}".format(iter, loss))
+	print("iter {} - loss: {:.8}".format(iter, loss))
 	return(t0, t1, lossHistory, t0History, t1History)
 
 def	main():
