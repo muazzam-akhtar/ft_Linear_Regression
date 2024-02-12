@@ -1,15 +1,6 @@
 from utils import *
 from math_utils import *
 
-def	earlyStopping(lossHistory: list) -> bool:
-	check = 8
-	if len(lossHistory) > check:
-		mean = sum(lossHistory[-check:]) / check
-		last = lossHistory[-1]
-		if round(mean, 9) == round(last, 9):
-			return True
-	return False
-
 def	gradientDescent(mileages: list, prices: list) -> tuple:
 	learningRate = 0.5
 	iterations = 500
@@ -28,7 +19,7 @@ def	gradientDescent(mileages: list, prices: list) -> tuple:
 			dt1 += ((t1 * mileage + t0) - price) * mileage
 		t0 -= dt0 / len(mileages) * learningRate
 		t1 -= dt1 / len(prices) * learningRate
-		loss = lossFunction(t0, t1, mileages, prices)
+		loss = findLosses(t0, t1, mileages, prices)
 		if iter % 10 == 0:
 			print("epoch {} - loss: {:.8}".format(iter, loss))
 		t0, t1, learningRate = boldDriver(loss, lossHistory, t0, t1,

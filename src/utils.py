@@ -23,6 +23,15 @@ def	fetchData(filePath: str) -> tuple:
 		prices[i] = eval(prices[i])
 	return mileages, prices
 
+def	earlyStopping(lossHistory: list) -> bool:
+	check = 8
+	if len(lossHistory) > check:
+		mean = sum(lossHistory[-check:]) / check
+		last = lossHistory[-1]
+		if round(mean, 9) == round(last, 9):
+			return True
+	return False
+
 def	boldDriver(loss: float, lossHistory: list, t0: float, t1: float,
 			dt0: float, dt1: float, learningRate: float, length: int) -> tuple:
 	if len(lossHistory) > 1:

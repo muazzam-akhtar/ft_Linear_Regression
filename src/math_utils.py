@@ -10,7 +10,7 @@ def	normalizeData(data: list) -> list:
 		_result.append(normalizeElem(i, max(data), min(data)))
 	return (_result)
 
-def	lossFunction(t0: float, t1: float, mileages: list, prices: list) -> float:
+def	findLosses(t0: float, t1: float, mileages: list, prices: list) -> float:
 	loss = 0.0
 	for mileage, price in zip(mileages, prices):
 		loss += (price - ((t1 * mileage) + t0)) ** 2
