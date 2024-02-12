@@ -12,8 +12,8 @@
 
 1. ~~Get the path of file which will be used for the program.~~
 2. ~~Fetch data from the file using csv.~~
-3. Apply gradient descent algorithm to create a linear regression model on the given data.
-4. Plot the observed data and predicted data oon the same figure.
+3. ~~Apply gradient descent algorithm to create a linear regression model on the given data.~~
+4. ~~Plot the observed data and predicted data oon the same figure.~~
 5. Create a new file accuracy.py which will generate the accuracy of the model with the observed data.
 
 ## References:
