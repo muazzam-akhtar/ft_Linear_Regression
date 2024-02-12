@@ -14,6 +14,9 @@ def	fetchData(filePath: str) -> tuple:
 	with open(filePath, 'r') as csvfile:
 		csvReader = csv.reader(csvfile, delimiter=',')
 		for row in csvReader:
+			if len(row) != 2:
+				print("Error")
+				exit(1)
 			mileages.append(row[0])
 			prices.append(row[1])
 	mileages.pop(0)
@@ -22,6 +25,28 @@ def	fetchData(filePath: str) -> tuple:
 		mileages[i] = eval(mileages[i])
 		prices[i] = eval(prices[i])
 	return mileages, prices
+
+def	getThetas(filePath: str) -> tuple:
+	t0, t1 = 0, 0
+	if (os.path.isfile(filePath)):
+		with open(filePath, 'r') as csvfile:
+			csvReader = csv.reader(csvfile, delimiter=',')
+			for row in csvReader:
+				if len(row) == 2:
+					t0 = float(row[0])
+					t1 = float(row[1])
+					break
+				print("Error")
+				exit(1)
+	return (t0, t1)
+
+def	estimatePrice(thetas, mileage, mileages, prices):
+	price = thetas[1] * normalizeElem(mileages, mileage) + thetas[0]
+	return (denormalizeElem(prices, price))
+
+def	estimatePrice(thetas: tuple, mileage: float, mileages: list, prices: list) -> float:
+	return(denormalizeElem((thetas[1] * normalizeElem(mileage, max(mileages),
+								min(mileages))) + thetas[0], max(prices), min(prices)))
 
 def	earlyStopping(lossHistory: list) -> bool:
 	check = 8
@@ -44,18 +69,18 @@ def	boldDriver(loss: float, lossHistory: list, t0: float, t1: float,
 	return (t0, t1, learningRate)
 
 def	storeData(t0: float, t1: float, filename: str):
-    with open(filename, 'w') as csvfile:
-        csvWriter = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-        csvWriter.writerow([t0, t1])
-        
+	with open(filename, 'w') as csvfile:
+		csvWriter = csv.writer(csvfile, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+		csvWriter.writerow([t0, t1])
+		
 def	plotting(t0: float, t1: float, mileages: list, prices: list):
-    lineX = [float(min(mileages)), float(max(mileages))]
-    lineY = []
-    for elem in lineX:
-        elem = (t1 * normalizeElem(elem, max(mileages), min(mileages))) + t0
-        lineY.append(denormalizeElem(elem, max(prices), min(prices)))
-    plt.figure("Linear Regression")
-    plt.plot(mileages, prices, 'bo', lineX, lineY, 'r-')
-    plt.xlabel('mileage')
-    plt.ylabel('price')
-    plt.show()
+	lineX = [float(min(mileages)), float(max(mileages))]
+	lineY = []
+	for elem in lineX:
+		elem = (t1 * normalizeElem(elem, max(mileages), min(mileages))) + t0
+		lineY.append(denormalizeElem(elem, max(prices), min(prices)))
+	plt.figure("Linear Regression")
+	plt.plot(mileages, prices, 'bo', lineX, lineY, 'r-')
+	plt.xlabel('mileage')
+	plt.ylabel('price')
+	plt.show()

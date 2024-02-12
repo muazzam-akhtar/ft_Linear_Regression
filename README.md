@@ -11,7 +11,10 @@
 7. boldDriver() function examines the last element of the loss. If the current loss is greater than the previous loss, it gives a new value of t0 and t1 by multiplying with learningRate and divided by the length of the mileages, also learning rate gets a new value which is half of the value of learning rate. If the loss is not greater, then the learning rate will have the new value of 5% more of its value. The function returns the tuple value of t0, t1, learningRate.
 8. storeData() function stores the values of t0, t1 in thetas.csv file.
 9. plotting() function plots the values of observed values and predicted values on the same graph.
-
+10. Created a new file accuracy.py.
+11. estimatePrice() returns the expected price of the model with the given mileage.
+12. getThetas() returns the values of thetas when extracted from the csv file.
+13. getAccuracy() returns the accuracy of the model by getting the absolute losses of the model first which is (Sum of Squares of Residuals) / (Total Sum of Squares). Then in order to get the accuracy we deduct the resulted value from 1.
 
 
 ## Objectives:
@@ -20,7 +23,7 @@
 2. ~~Fetch data from the file using csv.~~
 3. ~~Apply gradient descent algorithm to create a linear regression model on the given data.~~
 4. ~~Plot the observed data and predicted data oon the same figure.~~
-5. Create a new file accuracy.py which will generate the accuracy of the model with the observed data.
+5. ~~Create a new file accuracy.py which will generate the accuracy of the model with the observed data.~~
 
 ## Process:
 
