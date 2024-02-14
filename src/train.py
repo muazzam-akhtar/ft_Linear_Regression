@@ -2,6 +2,13 @@ from utils import *
 from math_utils import *
 
 def	gradientDescent(mileages: list, prices: list) -> tuple:
+	"""
+	Gradient Descent algorithm to find the theta values for the model.
+
+	Args: mileages: list, prices: list
+
+	Returns the tuple of theta values
+	"""
 	learningRate = 0.5
 	iterations = 500
 	lossHistory = []
