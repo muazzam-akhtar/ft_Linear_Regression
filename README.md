@@ -16,7 +16,6 @@
 12. getThetas() returns the values of thetas when extracted from the csv file.
 13. getAccuracy() returns the accuracy of the model by getting the absolute losses of the model first which is (Sum of Squares of Residuals) / (Total Sum of Squares). Then in order to get the accuracy we deduct the resulted value from 1.
 
-
 ## Objectives:
 
 1. [x] Get the path of file which will be used for the program.
@@ -36,3 +35,4 @@ Plot the data with the observed values and the predicted values on the same grap
 1. [Gradient Descent Wiki](https://en.wikipedia.org/wiki/Gradient_descent)
 2. [Gradient Descent Video](https://www.youtube.com/watch?v=sDv4f4s2SB8)
 3. [Gradient Descent GFG](https://www.geeksforgeeks.org/gradient-descent-algorithm-and-its-variants/)
+4. [Partial Differentiation Derivation](https://math.stackexchange.com/questions/70728/partial-derivative-in-gradient-descent-for-two-variables)
