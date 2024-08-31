@@ -36,3 +36,4 @@ Plot the data with the observed values and the predicted values on the same grap
 2. [Gradient Descent Video](https://www.youtube.com/watch?v=sDv4f4s2SB8)
 3. [Gradient Descent GFG](https://www.geeksforgeeks.org/gradient-descent-algorithm-and-its-variants/)
 4. [Partial Differentiation Derivation](https://math.stackexchange.com/questions/70728/partial-derivative-in-gradient-descent-for-two-variables)
+5. Submission Date Pending

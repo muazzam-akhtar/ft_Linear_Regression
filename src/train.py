@@ -48,6 +48,7 @@ def	main():
 	t0, t1, lossHistory, t0History, t1History = gradientDescent(x, y)
 	storeData(t0, t1, 'thetas.csv')
 	plotting(t0, t1, mileages, prices)
+	# plotting(t0History, t1History, mileages, prices)
 
 if __name__ == '__main__':
 	main()
